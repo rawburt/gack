@@ -1,0 +1,10 @@
+.DS_Store
+*.log
+log/
+coverage/
+/.bundle/
+/tmp/
+log/
+/spec/reports/
+.vscode
+*.gem

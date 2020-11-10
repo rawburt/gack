@@ -1,0 +1,20 @@
+require: rubocop-rspec
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.6
+Metrics/BlockLength:
+  Enabled: false
+Layout/LineLength:
+  Max: 160
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Lint/EmptyBlock:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 20
+Metrics/AbcSize:
+  Max: 30
+RSpec/MultipleExpectations:
+  Max: 5
+RSpec/ExampleLength:
+  Max: 10
