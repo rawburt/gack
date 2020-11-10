@@ -32,7 +32,7 @@ Nginx will be used for the TLS handshake and termination:
       }
 
       server {
-        # 195 is the default Gemini protocol port
+        # 1965 is the default Gemini protocol port
         listen 1965 ssl;
         proxy_pass backend;
 
