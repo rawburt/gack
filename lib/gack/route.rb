@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Gack
-  # Sphere is a Gemini request handler wrapper for a given path
-  class Sphere
+  # Route is a Gemini request handler wrapper for a given path
+  class Route
     HandlerMissingError = Class.new(StandardError)
 
     attr_reader :path, :handler

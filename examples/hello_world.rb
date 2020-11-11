@@ -4,7 +4,7 @@ require 'gack'
 
 # An example "Hello, World!" application
 class App < Gack::Application
-  sphere '/' do
+  route '/' do
     'Hello, World!'
   end
 end

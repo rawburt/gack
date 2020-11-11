@@ -3,22 +3,22 @@
 module Gack
   # The main DSL for making Gemini apps with Gack
   class Application
-    def self.sphere(path, &handler)
-      spheres << Gack::Sphere.new(path, &handler)
+    def self.route(path, &handler)
+      routes << Gack::Route.new(path, &handler)
     end
 
-    def self.spheres
-      @spheres ||= []
+    def self.routes
+      @routes ||= []
     end
 
     def self.run!
-      new(spheres).run!
+      new(routes).run!
     end
 
-    attr_reader :spheres
+    attr_reader :routes
 
-    def initialize(spheres)
-      @spheres = spheres
+    def initialize(routes)
+      @routes = routes
     end
 
     def run!
@@ -29,9 +29,9 @@ module Gack
     end
 
     def server_loop_handler(request)
-      sphere = match_sphere(request.location)
-      if sphere
-        result = sphere.handle_request(request)
+      route = match_route(request.location)
+      if route
+        result = route.handle_request(request)
         if result.is_a?(Response)
           result
         else
@@ -42,8 +42,8 @@ module Gack
       end
     end
 
-    def match_sphere(location)
-      spheres.find { |s| s.path_match?(location) }
+    def match_route(location)
+      routes.find { |s| s.path_match?(location) }
     end
   end
 end
