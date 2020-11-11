@@ -33,14 +33,14 @@ module Gack
 
       return "/#{split_request.last}" if split_request.size == 2
 
-      "/#{split_request[1..-1].join('/')}"
+      "/#{split_request[1..].join('/')}"
     end
 
     def parse_input
       split_input = clean_request.split('?')
 
       if split_input.size > 2
-        CGI.unescape(split_input[1..-1].join('?'))
+        CGI.unescape(split_input[1..].join('?'))
       else
         CGI.unescape(split_input.last)
       end

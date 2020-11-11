@@ -3,7 +3,7 @@
 require 'gack'
 
 # An example "Hello, World!" application
-class App < Gack::Capsule
+class App < Gack::Application
   sphere '/' do
     'Hello, World!'
   end

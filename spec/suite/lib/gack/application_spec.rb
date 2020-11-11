@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-RSpec.describe Gack::Capsule do
-  subject(:capsule) { described_class }
+RSpec.describe Gack::Application do
+  subject(:application) { described_class }
 
   it 'stores spheres' do
-    klass = Class.new(Gack::Capsule) do
+    klass = Class.new(Gack::Application) do
       sphere('/') { 'hello' }
     end
 
@@ -15,11 +15,11 @@ RSpec.describe Gack::Capsule do
     let(:sphere) { Gack::Sphere.new('/blog/1') { 'ok' } }
 
     it 'returns sphere that meets matching path' do
-      expect(capsule.new([sphere]).match_sphere('/blog/1')).to eql(sphere)
+      expect(application.new([sphere]).match_sphere('/blog/1')).to eql(sphere)
     end
 
     it 'returns no sphere if there is no match' do
-      expect(capsule.new([sphere]).match_sphere('/blogs')).to be_nil
+      expect(application.new([sphere]).match_sphere('/blogs')).to be_nil
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe Gack::Capsule do
     end
 
     let(:klass) do
-      capsule.new(spheres)
+      application.new(spheres)
     end
 
     it 'returns sphere result as success' do

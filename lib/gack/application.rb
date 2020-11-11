@@ -2,7 +2,7 @@
 
 module Gack
   # The main DSL for making Gemini apps with Gack
-  class Capsule
+  class Application
     def self.sphere(path, &handler)
       spheres << Gack::Sphere.new(path, &handler)
     end
