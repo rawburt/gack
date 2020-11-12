@@ -11,6 +11,7 @@ module Gack
       @routes ||= []
     end
 
+    # `run!(port: 1234)` to change the port the server runs on
     def self.run!(**opts)
       new(routes, **opts).run!
     end
