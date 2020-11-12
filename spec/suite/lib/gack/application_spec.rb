@@ -60,4 +60,16 @@ RSpec.describe Gack::Application do
       expect(resp.status_code).to be(51)
     end
   end
+
+  describe 'run!' do
+    it 'accepts a port' do
+      mock_server = class_double(Gack::Server)
+      mock_server_instance = instance_double(Gack::Server)
+
+      allow(mock_server_instance).to receive(:event_loop)
+      allow(mock_server).to receive(:new).with(port: 1234).and_return(mock_server_instance)
+
+      described_class.run!(port: 1234, server: mock_server)
+    end
+  end
 end

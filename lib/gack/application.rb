@@ -11,18 +11,19 @@ module Gack
       @routes ||= []
     end
 
-    def self.run!
-      new(routes).run!
+    def self.run!(**opts)
+      new(routes, **opts).run!
     end
 
     attr_reader :routes
 
-    def initialize(routes)
+    def initialize(routes, port: nil, server: Gack::Server)
       @routes = routes
+      @server = server
+      @port = port
     end
 
     def run!
-      server = Gack::Server.new
       server.event_loop do |request|
         server_loop_handler(request)
       end
@@ -44,6 +45,16 @@ module Gack
 
     def match_route(location)
       routes.find { |s| s.path_match?(location) }
+    end
+
+    private
+
+    def server
+      if @port
+        @server.new(port: @port)
+      else
+        @server.new
+      end
     end
   end
 end

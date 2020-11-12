@@ -8,7 +8,19 @@ Install gem:
 
     gem install gack
 
-See examples for more details: [Examples](./examples/)
+Build an app:
+
+```ruby
+require 'gack'
+
+class App < Gack::Application
+  route '/' do
+    'Hello, World!'
+  end
+end
+
+App.run!
+```
 
 ### TLS
 
